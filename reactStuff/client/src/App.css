@@ -6,15 +6,23 @@
 .Container {
   display: flex;
   flex-direction: column;
-  background-color: lightblue;
   text-align: center;
-}
-
-.Container p {
   font-size: 62.5%;
+  max-width: 500px;
+  margin: 0 auto;
 }
 
 .navLinks {
   display: flex;
   justify-content: space-around;
+}
+
+.formDiv {
+  border: 0.5px solid black;
+  display: inline-flex;
+  flex-direction: column;
+}
+
+.formDiv button {
+  margin: 20px;
 }
