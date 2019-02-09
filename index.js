@@ -127,6 +127,21 @@ server.post('/api/login', (req, res) => {
   .catch(error => {res.status(500).send(error)})
 })
 
+server.get('/api/jokes', protected, (req, res) => {
+  const requestOptions = {
+    headers: { accept: 'application/json' },
+  };
+
+  axios
+    .get('https://icanhazdadjoke.com/search', requestOptions)
+    .then(response => {
+      res.status(200).json(response.data.results);
+    })
+    .catch(err => {
+      res.status(500).json({ message: 'Error Fetching Jokes', error: err });
+    });
+})
+
 const port = process.env.PORT || 3300;
 server.listen(port, () => {
   console.log(`\n=== Server listening on port ${port}\n`);
