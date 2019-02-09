@@ -8,38 +8,38 @@ module.exports = server => {
   server.post('/api/register', register);
   server.post('/api/login', login);
   server.get('/api/jokes', authenticate, getJokes);
-  server.get('/', homepage)
+  // server.get('/', homepage)
 };
 
 function register(req, res) {
   // implement user registration
-  const creds = req.body;
-  const hash = bcrypt.hashSync(creds.password, 10);
-  creds.password = hash;
-
-  db('users')
-  .insert(creds)
-  .then(ids => {
-    const id = ids[0]
+    const creds = req.body;
+    const hash = bcrypt.hashSync(creds.password, 10);
+    creds.password = hash;
+  
     db('users')
-    .where({id})
-    .first()
-    .then(user => {
-      const token = generateToken(user);
-      res.status(201).json({id: user.id, token})
+    .insert(creds)
+    .then(ids => {
+      const id = ids[0];
+      db('users')
+      .where({ id })
+      .first()
+      .then(user => {
+        const token = generateToken(user);
+        res.status(201).json({id: user.id, token})
+      })
+      .catch(err => res.status(500).send(`error on line 31`))
     })
-    .catch(err => res.status(500).send(err))
-  })
-  .catch(err => res.status(500).send(err))
+    .catch(err => res.status(500).send(`error on line 33`))
 }
 
 function login(req, res) {
   // implement user login
 }
 
-function homepage(req, res) {
-  res.send('Welcome!')
-}
+// function homepage(req, res) {
+//   res.send('Welcome!')
+// }
 
 function getJokes(req, res) {
   const requestOptions = {
