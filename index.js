@@ -110,6 +110,23 @@ server.post('/api/register', (req, res) => {
   .catch(err => res.status(500).send(err))
 })
 
+server.post('/api/login', (req, res) => {
+  const credentials = req.body;
+  db('users')
+  .where({username: credentials.username})
+  .first()
+  .then(user => {
+    if(user && bcrypt.compareSync(credentials.password, user.password)){
+      const token = generateToken(user);
+
+      res.status(200).json({token})
+    } else {
+      res.status(404).json(`Invalid username or password`)
+    }
+  })
+  .catch(error => {res.status(500).send(error)})
+})
+
 const port = process.env.PORT || 3300;
 server.listen(port, () => {
   console.log(`\n=== Server listening on port ${port}\n`);
