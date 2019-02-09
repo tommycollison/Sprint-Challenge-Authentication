@@ -28,19 +28,30 @@ Implement an User Authentication System in order to access the jokes from the Jo
 
 Demonstrate your understanding of this week's concepts by answering the following free-form questions. Edit this document to include your answers after each question. Make sure to leave a blank line above and below your answer so it is clear and easy to read by your project manager.
 
-1. What is the purpose of using _sessions_?
-1. What does bcrypt do to help us store passwords in a secure manner.
-1. What does bcrypt do to slow down attackers?
-1. What are the three parts of the JSON Web Token?
+**1. What is the purpose of using _sessions_?**
+
+Sessions give users a certain amount of authentication/access for a certain amount of time. The metaphor we've used in class is an access badge at a hospital -- you can't visit everywhere forever, but a badge will let you into certain places for a certain time. Sessions are stored in the browser memory, which means they get reset every time the server restarts (or the user logs out).
+
+**1. What does bcrypt do to help us store passwords in a secure manner?**
+
+Bcrypt is a module that saves us from having to store the user's password in plaintext on the server. 😱The module has a hash function that obfuscates the password.
+
+**1. What does bcrypt do to slow down attackers?**
+
+Bcrypt uses time! It adds time to the hash function to make it harder to guess.
+
+**1. What are the three parts of the JSON Web Token?**
+
+Header, payload, sig verification.
 
 ## Project Set Up
 
 Follow these steps to set up and work on your project:
 
 - [x] Create a forked copy of this project.
-- [ ] Add PM as collaborator on Github.
-- [ ] Clone your OWN version of Repo (Not Lambda's by mistake!).
-- [ ] Create a new Branch on the clone: git checkout -b `<firstName-lastName>`.
+- [x] Add PM as collaborator on Github.
+- [x] Clone your OWN version of Repo (Not Lambda's by mistake!).
+- [x] Create a new Branch on the clone: git checkout -b `<firstName-lastName>`.
 - [ ] Implement the project on this Branch, committing changes regularly.
 - [ ] Push commits: git push origin `<firstName-lastName>`.
 
