@@ -3,7 +3,8 @@ const axios = require('axios');
 const express = require('express');
 const cors = require('cors');
 const bcrypt = require('bcryptjs');
-const session = require('express-session')
+const session = require('express-session');
+const PORT = 7654;
 
 const db = require('./database/dbConfig.js');
 const jwt = require('jsonwebtoken')
@@ -124,7 +125,7 @@ server.post('/api/login', (req, res) => {
       res.status(404).json(`Invalid username or password`)
     }
   })
-  .catch(error => {res.status(500).send(error)})
+  .catch(error => {res.status(500).send(`err 128:`, error)})
 })
 
 server.get('/api/jokes', protected, (req, res) => {
@@ -148,5 +149,5 @@ server.listen(port, () => {
 });
 
 server.get('/', (req, res) => {
-  res.send('Welcome from index.js!')
+  res.send(`Welcome from index.js on port ${PORT}!`)
 })

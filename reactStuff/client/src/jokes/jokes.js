@@ -15,7 +15,7 @@ class Jokes extends Component {
         const endpoint = 'http://localhost:3300/api/jokes';
         axios.get(endpoint).then(res => {
             console.log(res.data)
-        }).catch(err => {console.log('ERROR: line 18 of jokes.js', err)})
+        }).catch(err => {console.log('ERROR: line 18 of jokes.js:', err)})
     }
 }
 
