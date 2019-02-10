@@ -28,15 +28,18 @@ class Login extends Component {
         event.preventDefault();
         const endpoint = 'http://localhost:3300/api/login/';
 
-        
-
         const login = {
             username: this.state.username,
             password: this.state.password
         }
 
         axios.post(endpoint, login)
-        .then(res => console.log(res.data))
+        .then(res => {
+            console.log(res.data)
+            localStorage.setItem('jwt', res.data.token)
+
+        })
+
         .catch(err => console.log(`error, line 38 of logn.js:`, err))
     }
 

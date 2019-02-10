@@ -2,7 +2,12 @@ import React, {Component} from 'react';
 import axios from 'axios'
 
 class Jokes extends Component {
-
+    constructor(props){
+        super(props);
+        this.state = {
+            jokes: [],
+        }
+    }
     render() {
         return(
             <div className="jokesDiv">
@@ -10,13 +15,22 @@ class Jokes extends Component {
             </div>
         )
     }
-
     componentDidMount(){
+        const token = localStorage.getItem('jwt');
         const endpoint = 'http://localhost:3300/api/jokes';
-        axios.get(endpoint).then(res => {
-            console.log(res.data)
-        }).catch(err => {console.log('ERROR: line 18 of jokes.js:', err)})
+        const options = {
+         headers: {
+             Authorization: token
+         }
+     }
+
+        axios.get(endpoint, options)
+        .then(res=>{
+            console.log(res.data);
+            this.setState({users: res.data})
+        })
     }
+
 }
 
 export default Jokes;
