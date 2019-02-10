@@ -11,7 +11,11 @@ class Jokes extends Component {
     render() {
         return(
             <div className="jokesDiv">
-                <p>Hello from the jokes div!</p>
+            <h3>Some dad jokes</h3>
+            <ul>
+                {this.state.jokes.map(x =>
+                    <li key={x.id}>{x.joke}</li>)}
+            </ul>
             </div>
         )
     }
@@ -27,7 +31,7 @@ class Jokes extends Component {
         axios.get(endpoint, options)
         .then(res=>{
             console.log(res.data);
-            this.setState({users: res.data})
+            this.setState({jokes: res.data})
         })
     }
 

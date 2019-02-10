@@ -26,3 +26,8 @@
 .formDiv button {
   margin: 20px;
 }
+
+.jokesDiv {
+  border: 1px solid black;
+  margin: 20px;
+}

@@ -40,7 +40,7 @@ class Login extends Component {
 
         })
 
-        .catch(err => console.log(`error, line 38 of logn.js:`, err))
+        .catch(err => console.log(`error, line 38 of login.js:`, err))
     }
 
     inputHandler = (event) => {
