@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import axios from 'axios';
+import {Link} from 'react-router-dom'
 
 class Login extends Component {
     constructor(props){
@@ -19,7 +20,7 @@ class Login extends Component {
                     
                     <label htmlFor='password'><p>Password</p><input name='password' type='text' placeholder='Your dad password' onChange={this.inputHandler}></input></label>
                 </form>
-            <button onClick={this.handleSubmit}>Let's get some dad jokes</button>
+            <Link to='/jokes'><button onClick={this.handleSubmit}>Let us get some dad jokes</button></Link>
             </div> 
         </div>
     )}
